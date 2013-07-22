@@ -117,18 +117,12 @@ namespace Supermarket.Client
                         {
                             if (reader[0].ToString().CompareTo("…") != 0)
                             {
-                                int? locId = -1;
-                                Location location = new Location();
-                                foreach (var item in db.Sales)
-                                {
-                                    if (item.Location.LocationName.CompareTo(locationName) == 0)
-                                    {
-                                        locId = item.LocationID;
-                                        break;
-                                    }
-                                }
+                                int? locId = db.Locations
+                                    .Where(x => x.LocationName == locationName)
+                                    .Select(x => x.ID).FirstOrDefault();
+                                Location location = new Location();                                
 
-                                if (locId == -1)
+                                if (locId == 0)
                                 {
                                     location.LocationName = locationName;
                                     saleObj.Location = location;
