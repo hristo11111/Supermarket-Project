@@ -1,0 +1,13 @@
+/Supermarket/Supermarket.Client/bin
+
+/Supermarket/Supermarket.Client/obj
+/Supermarket/Supermarket-EF.Data/obj
+/Supermarket/Supermarket-EF.Data/bin
+/Supermarket/SupermarketOpenAccess.Models/obj
+/Supermarket/SupermarketOpenAccess.Models/bin
+/Supermarket/Supermarket.Client/*.config
+/Supermarket/Supermarket-EF.Data/App.Config
+/Supermarket/SupermarketOpenAccess.Models/App.Config
+/Supermarket/SupermarketOpenAccess.Models/App.Config
+/Supermarket/Supermarket-EF.Data/App.Config
+/Supermarket/Supermarket.Client/App.config
