@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Text;
 
 namespace Supermarket.Client
 {
@@ -20,7 +19,6 @@ namespace Supermarket.Client
 
                 while (result.Read())
                 {
-                    //display records  
                     Console.WriteLine(result["ProductName"].ToString() + " - " + result["Tax"].ToString());
                 }
             }
@@ -47,12 +45,10 @@ namespace Supermarket.Client
 
                     SQLiteCommand cmd = new SQLiteCommand(commandText, dbSqLiteConnection);
                     var result = cmd.ExecuteNonQuery();
-                    var asd = 3;
                 }
             }
             catch (SQLiteException ex)
             {
-                var asd = 3;
             }
             finally
             {
