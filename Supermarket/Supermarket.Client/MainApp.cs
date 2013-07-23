@@ -64,7 +64,7 @@ namespace Supermarket.Client
                     {
                         new TaxesData()
                         {
-                            ProductName = "asdasd", Tax = 22
+                            ProductName = "Ham", Tax = 22
                         }
                     });
                 }
