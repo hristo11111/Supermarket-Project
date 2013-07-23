@@ -16,10 +16,10 @@ namespace Supermarket.Client
             StringBuilder sb = new StringBuilder();
             using (var dbEF = new SupermarketEntities())
             {
-                sb.Append("<table cellpadding='5' border='1' width='100%'>");
+                sb.Append("<table cellpadding='5' border='1'>");
                 sb.Append("<tr><th align='center'><b>Aggregated Sales Report</b></th></tr>");
                 sb.Append("</table>");
-                sb.Append("<table cellpadding='5' border='1' width='100%'>");
+                sb.Append("<table cellpadding='5' border='1'>");
 
                 decimal grandTotal = 0M;
 
@@ -28,11 +28,6 @@ namespace Supermarket.Client
                 {
                     var date = DateTime.Parse(dateTime.ToString()).ToShortDateString();
                     //Console.WriteLine(dateTime);
-                    sb.Append("<col width='10'>");
-                    sb.Append("<col width='30'>");
-                    sb.Append("<col width='10'>");
-                    sb.Append("<col width='30'>");
-                    sb.Append("<col width='20'>");
                     sb.AppendFormat("<tr bgcolor='silver'><td colspan='5'>Date: {0}</td></tr>", date);
                     sb.Append("<tr bgcolor='silver'>");
                     sb.Append("<td><b>Product</b></td>");
