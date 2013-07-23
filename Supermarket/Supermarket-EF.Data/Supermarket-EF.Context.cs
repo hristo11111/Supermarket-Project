@@ -25,6 +25,7 @@ namespace Supermarket_EF.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Expens> Expenses { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Measure> Measures { get; set; }
         public DbSet<Product> Products { get; set; }

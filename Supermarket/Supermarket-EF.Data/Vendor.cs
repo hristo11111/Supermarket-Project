@@ -16,12 +16,14 @@ namespace Supermarket_EF.Data
     {
         public Vendor()
         {
+            this.Expenses = new HashSet<Expens>();
             this.Products = new HashSet<Product>();
         }
     
         public int ID { get; set; }
         public string VendorName { get; set; }
     
+        public virtual ICollection<Expens> Expenses { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
 }

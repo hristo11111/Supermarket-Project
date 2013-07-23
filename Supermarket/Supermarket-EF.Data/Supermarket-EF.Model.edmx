@@ -6,11 +6,16 @@
     <edmx:StorageModels>
       <Schema Namespace="SupermarketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="SupermarketModelStoreContainer">
+          <EntitySet Name="Expenses" EntityType="SupermarketModel.Store.Expenses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Locations" EntityType="SupermarketModel.Store.Locations" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Measures" EntityType="SupermarketModel.Store.Measures" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Products" EntityType="SupermarketModel.Store.Products" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Sales" EntityType="SupermarketModel.Store.Sales" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Vendors" EntityType="SupermarketModel.Store.Vendors" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Expenses_Vendors" Association="SupermarketModel.Store.FK_Expenses_Vendors">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Expenses" EntitySet="Expenses" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Measures" Association="SupermarketModel.Store.FK_Products_Measures">
             <End Role="Measures" EntitySet="Measures" />
             <End Role="Products" EntitySet="Products" />
@@ -28,6 +33,15 @@
             <End Role="Sales" EntitySet="Sales" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Expenses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="Expenses" Type="money" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="Locations">
           <Key>
             <PropertyRef Name="ID" />
@@ -71,6 +85,18 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="VendorName" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_Expenses_Vendors">
+          <End Role="Vendors" Type="SupermarketModel.Store.Vendors" Multiplicity="1" />
+          <End Role="Expenses" Type="SupermarketModel.Store.Expenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Expenses">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Measures">
           <End Role="Measures" Type="SupermarketModel.Store.Measures" Multiplicity="0..1" />
           <End Role="Products" Type="SupermarketModel.Store.Products" Multiplicity="*" />
@@ -125,11 +151,16 @@
     <edmx:ConceptualModels>
       <Schema Namespace="SupermarketModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SupermarketEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Expenses" EntityType="SupermarketModel.Expens" />
           <EntitySet Name="Locations" EntityType="SupermarketModel.Location" />
           <EntitySet Name="Measures" EntityType="SupermarketModel.Measure" />
           <EntitySet Name="Products" EntityType="SupermarketModel.Product" />
           <EntitySet Name="Sales" EntityType="SupermarketModel.Sale" />
           <EntitySet Name="Vendors" EntityType="SupermarketModel.Vendor" />
+          <AssociationSet Name="FK_Expenses_Vendors" Association="SupermarketModel.FK_Expenses_Vendors">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Expenses" EntitySet="Expenses" />
+          </AssociationSet>
           <AssociationSet Name="FK_Sales_Locations" Association="SupermarketModel.FK_Sales_Locations">
             <End Role="Locations" EntitySet="Locations" />
             <End Role="Sales" EntitySet="Sales" />
@@ -147,6 +178,16 @@
             <End Role="Sales" EntitySet="Sales" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Expens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="Int32" Nullable="false" />
+          <Property Name="Expenses" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Vendor" Relationship="SupermarketModel.FK_Expenses_Vendors" FromRole="Expenses" ToRole="Vendors" />
+        </EntityType>
         <EntityType Name="Location">
           <Key>
             <PropertyRef Name="ID" />
@@ -196,8 +237,21 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="VendorName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Expenses" Relationship="SupermarketModel.FK_Expenses_Vendors" FromRole="Vendors" ToRole="Expenses" />
           <NavigationProperty Name="Products" Relationship="SupermarketModel.FK_Products_Vendors" FromRole="Vendors" ToRole="Products" />
         </EntityType>
+        <Association Name="FK_Expenses_Vendors">
+          <End Role="Vendors" Type="SupermarketModel.Vendor" Multiplicity="1" />
+          <End Role="Expenses" Type="SupermarketModel.Expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Expenses">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Sales_Locations">
           <End Role="Locations" Type="SupermarketModel.Location" Multiplicity="0..1" />
           <End Role="Sales" Type="SupermarketModel.Sale" Multiplicity="*" />
@@ -252,6 +306,16 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SupermarketModelStoreContainer" CdmEntityContainer="SupermarketEntities">
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="SupermarketModel.Expens">
+              <MappingFragment StoreEntitySet="Expenses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Expenses" ColumnName="Expenses" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Locations">
             <EntityTypeMapping TypeName="SupermarketModel.Location">
               <MappingFragment StoreEntitySet="Locations">
