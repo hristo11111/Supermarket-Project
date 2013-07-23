@@ -7,6 +7,8 @@ using Supermarket_EF.Data;
 using System.Xml;
 using System.Globalization;
 using MongoDB.Driver;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace Supermarket.Client
 {
@@ -44,33 +46,49 @@ namespace Supermarket.Client
                         expense.Expenses = expenseValue;
                         expense.VendorId = id;
 
+
+
                         expenses.Add(expense);
+
+                        ExpenseByName expenseByName = new ExpenseByName();
+                        expenseByName.VendorName = vendorName;
+                        expenseByName.Date = expense.Date;
+                        expenseByName.Expenses = expense.Expenses;
+
+                        AddInMongoDB(expenseByName);
                     }
                 }
 
-                int index = 1;
+                
 
                 foreach (Expens item in expenses)
                 {
                     db.Expenses.Add(item);
                     //db.SaveChanges();
-                    item.Id = index;
-                    AddInMongoDB(item);
-                    index++;
+                    
                 }
             }
         }
 
-        private static void AddInMongoDB(Expens expense)
+        private static void AddInMongoDB(ExpenseByName expense)
         {
             var mongoClient = new MongoClient("mongodb://localhost/");
             var mongoServer = mongoClient.GetServer();
             var productReports = mongoServer.GetDatabase("Product-Reports");
 
-            
-
             var reports = productReports.GetCollection("expenses");
             reports.Insert(expense);
+        }
+
+        private class ExpenseByName
+        {
+            [BsonId]
+            public ObjectId Id { get; set; }
+
+            public string VendorName { get; set; }
+            public DateTime Date { get; set; }
+            public decimal Expenses { get; set; }
+
         }
     }
 }
