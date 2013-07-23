@@ -1,4 +1,5 @@
-{ "product-id" : 2,
+{ "-id" : ObjectId("51eec2d360340b2160b74e9f"),
+ "product-id" : 2,
  "product-name" : "Vodka “Targovishte”",
  "vendor-name" : "Targovishte Bottling Company Ltd.",
  "total-quantity-sold" : 144,

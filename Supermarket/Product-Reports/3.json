@@ -1,4 +1,5 @@
-{ "product-id" : 3,
+{ "-id" : ObjectId("51eec2d360340b2160b74ea1"),
+ "product-id" : 3,
  "product-name" : "Beer “Beck’s”",
  "vendor-name" : "Zagorka Corp.",
  "total-quantity-sold" : 236,

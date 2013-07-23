@@ -26,52 +26,53 @@ namespace Supermarket.Client
 
                 using (var dbSql = new SupermarketEntities())
                 {
-                    //foreach (var vendor in vendors)
-                    //{
-                    //    Supermarket_EF.Data.Vendor vendorObj = new Supermarket_EF.Data.Vendor();
-                    //    vendorObj.ID = vendor.IdvendorsID;
-                    //    vendorObj.VendorName = vendor.VendorName;
-                    //    dbSql.Vendors.Add(vendorObj);
-                    //}
-                    //foreach (var measure in measures)
-                    //{
-                    //    Supermarket_EF.Data.Measure measureObj = new Supermarket_EF.Data.Measure()
-                    //    {
-                    //        ID = measure.ID,
-                    //        MeasureName = measure.MeasureName
-                    //    };
-                    //    dbSql.Measures.Add(measureObj);
-                    //}
-                    //foreach (var product in products)
-                    //{
-                    //    Supermarket_EF.Data.Product productObj = new Supermarket_EF.Data.Product()
-                    //    {
-                    //        ID = product.ID,
-                    //        VendorID = product.VendorID,
-                    //        ProductName = product.ProductName,
-                    //        MeasureID = product.MeasureID,
-                    //        BasePrice = (decimal)product.BasePrice
-                    //    };
-                    //    dbSql.Products.Add(productObj);
-                    //}
-                    //dbSql.SaveChanges();
-                    //MyExtract();
-                    //string dirPath = "../../../Extracted Files";
-                    //var dir = Directory.GetDirectories(dirPath);
-                    //
-                    //Traversed(dir);
-                    SQLiteClient.Write(new List<TaxesData>()
+                    foreach (var vendor in vendors)
                     {
-                        new TaxesData()
+                        Supermarket_EF.Data.Vendor vendorObj = new Supermarket_EF.Data.Vendor();
+                        vendorObj.ID = vendor.IdvendorsID;
+                        vendorObj.VendorName = vendor.VendorName;
+                        dbSql.Vendors.Add(vendorObj);
+                    }
+                    foreach (var measure in measures)
+                    {
+                        Supermarket_EF.Data.Measure measureObj = new Supermarket_EF.Data.Measure()
                         {
-                            ProductName = "Ham", Tax = 22
-                        }
-                    });
+                            ID = measure.ID,
+                            MeasureName = measure.MeasureName
+                        };
+                        dbSql.Measures.Add(measureObj);
+                    }
+                    foreach (var product in products)
+                    {
+                        Supermarket_EF.Data.Product productObj = new Supermarket_EF.Data.Product()
+                        {
+                            ID = product.ID,
+                            VendorID = product.VendorID,
+                            ProductName = product.ProductName,
+                            MeasureID = product.MeasureID,
+                            BasePrice = (decimal)product.BasePrice
+                        };
+                        dbSql.Products.Add(productObj);
+                    }
+                    dbSql.SaveChanges();
+                    MyExtract();
+
+                    string dirPath = "../../../Extracted Files";
+                    var dir = Directory.GetDirectories(dirPath);
+
+                    Traverse(dir);
+
+                    PdfReportCreator.CreatePDFs();
+                    XmlReportCreator.CreateReport();
+                    ExportReportInMongoDB.CreateReport();
+                    VendorExpenses.LoadVendorExpenses();
+              
+                    VendorsReports.CreateExcel();
                 }
             }
         }
 
-        private static void Traversed(string[] dir)
+        private static void Traverse(string[] dir)
         {
             foreach (var subdir in dir)
             {

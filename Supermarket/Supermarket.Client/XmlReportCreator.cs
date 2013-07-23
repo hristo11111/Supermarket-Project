@@ -11,7 +11,7 @@ namespace Supermarket.Client
     {
         public static void CreateReport()
         {
-            string path = "../../Report.xml";
+            string path = "../../../Report.xml";
             Encoding encoding = Encoding.GetEncoding("windows-1251");
             CultureInfo nonInvariantCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentCulture = nonInvariantCulture;

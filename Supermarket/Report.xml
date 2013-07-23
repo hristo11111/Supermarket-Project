@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<sales>
+		<sale vendor="Supermarket “Bourgas – Plaza”">
+				<summary date="20-Jul-2013" total-sum="{3:7.00}" />
+				<summary date="20-Jul-2013" total-sum="{11:9.00}" />
+				<summary date="21-Jul-2013" total-sum="{1:1.00}" />
+				<summary date="21-Jul-2013" total-sum="{17:0.00}" />
+				<summary date="22-Jul-2013" total-sum="{20:4.00}" />
+				<summary date="22-Jul-2013" total-sum="{1:6.00}" />
+		</sale>
+		<sale vendor="Supermarket “Kaspichan – Center”">
+				<summary date="20-Jul-2013" total-sum="{4:8.00}" />
+				<summary date="20-Jul-2013" total-sum="{5:9.80}" />
+				<summary date="20-Jul-2013" total-sum="{3:4.80}" />
+				<summary date="21-Jul-2013" total-sum="{5:1.60}" />
+				<summary date="21-Jul-2013" total-sum="{7:1.76}" />
+				<summary date="21-Jul-2013" total-sum="{2:6.10}" />
+				<summary date="22-Jul-2013" total-sum="{8:2.80}" />
+				<summary date="22-Jul-2013" total-sum="{4:0.60}" />
+				<summary date="22-Jul-2013" total-sum="{2:1.60}" />
+		</sale>
+		<sale vendor="Supermarket “Bay Ivan” – Zmeyovo">
+				<summary date="20-Jul-2013" total-sum="{1:9.95}" />
+				<summary date="20-Jul-2013" total-sum="{3:1.20}" />
+				<summary date="21-Jul-2013" total-sum="{1:4.25}" />
+				<summary date="21-Jul-2013" total-sum="{2:3.40}" />
+		</sale>
+		<sale vendor="Supermarket “Plovdiv – Stolipinovo”">
+				<summary date="21-Jul-2013" total-sum="{7:8.75}" />
+				<summary date="21-Jul-2013" total-sum="{12:8.48}" />
+				<summary date="21-Jul-2013" total-sum="{51:5.90}" />
+				<summary date="22-Jul-2013" total-sum="{9:2.40}" />
+				<summary date="22-Jul-2013" total-sum="{6:3.00}" />
+				<summary date="22-Jul-2013" total-sum="{20:2.40}" />
+		</sale>
+</sales>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MongoDB.Driver.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Supermarket_EF.Data;
@@ -9,6 +10,7 @@ using System.Globalization;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using System.Data.SQLite;
 
 namespace Supermarket.Client
 {
@@ -25,6 +27,10 @@ namespace Supermarket.Client
             using (var db = new SupermarketEntities())
             {
                 string vendorName;
+                var mongoClient = new MongoClient("mongodb://localhost/");
+                var mongoServer = mongoClient.GetServer();
+                var productReports = mongoServer.GetDatabase("Product-Reports");
+                var reports = productReports.GetCollection("expenses");
 
                 foreach (XmlNode item in rootNode.ChildNodes)
                 {
@@ -55,30 +61,51 @@ namespace Supermarket.Client
                         expenseByName.Date = expense.Date;
                         expenseByName.Expenses = expense.Expenses;
 
-                        AddInMongoDB(expenseByName);
+                        reports.Insert(expenseByName);  
                     }
                 }
 
-                
+
 
                 foreach (Expens item in expenses)
                 {
                     db.Expenses.Add(item);
-                    //db.SaveChanges();
-                    
                 }
+
+                db.SaveChanges();
+
+                WriteToSqlLite(reports);
             }
         }
 
-        private static void AddInMongoDB(ExpenseByName expense)
+        private static void WriteToSqlLite(MongoCollection totalExpenses)
         {
-            var mongoClient = new MongoClient("mongodb://localhost/");
-            var mongoServer = mongoClient.GetServer();
-            var productReports = mongoServer.GetDatabase("Product-Reports");
+            string conString = @"Data Source=../../../supermarket.db;Version=3;";
+            var dbSqLiteConnection = new SQLiteConnection(conString);
+            try
+            {
+                dbSqLiteConnection.Open();
+                var query = totalExpenses.FindAllAs<ExpenseByName>()
+                    .Where(x => x.Date.ToString("MM-yyyy") == "06-2013")
+                    .Select(y => new { Expenses = y.Expenses, VendorName = y.VendorName });
 
-            var reports = productReports.GetCollection("expenses");
-            reports.Insert(expense);
+                foreach (var item in query)
+                {
+                    string commandText = String.Format(@"INSERT INTO TotalExpenses VALUES(""{0}"",{1});", item.VendorName, item.Expenses);
+                    SQLiteCommand cmd = new SQLiteCommand(commandText, dbSqLiteConnection);
+                    var result = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                dbSqLiteConnection.Close();
+            }
         }
+
 
         private class ExpenseByName
         {
