@@ -14,7 +14,6 @@ using System.Globalization;
 
 namespace Supermarket.Client
 {
-
     class MainApp
     {
         static void Main()
@@ -34,7 +33,6 @@ namespace Supermarket.Client
                     //    vendorObj.VendorName = vendor.VendorName;
                     //    dbSql.Vendors.Add(vendorObj);
                     //}
-
                     //foreach (var measure in measures)
                     //{
                     //    Supermarket_EF.Data.Measure measureObj = new Supermarket_EF.Data.Measure()
@@ -44,7 +42,6 @@ namespace Supermarket.Client
                     //    };
                     //    dbSql.Measures.Add(measureObj);
                     //}
-
                     //foreach (var product in products)
                     //{
                     //    Supermarket_EF.Data.Product productObj = new Supermarket_EF.Data.Product()
@@ -57,15 +54,19 @@ namespace Supermarket.Client
                     //    };
                     //    dbSql.Products.Add(productObj);
                     //}
-
                     //dbSql.SaveChanges();
-
                     //MyExtract();
-
-                    string dirPath = "../../../Extracted Files";
-                    var dir = Directory.GetDirectories(dirPath);
-
-                    Traversed(dir);
+                    //string dirPath = "../../../Extracted Files";
+                    //var dir = Directory.GetDirectories(dirPath);
+                    //
+                    //Traversed(dir);
+                    SQLiteClient.Write(new List<TaxesData>()
+                    {
+                        new TaxesData()
+                        {
+                            ProductName = "Ham", Tax = 22
+                        }
+                    });
                 }
             }
         }
@@ -86,7 +87,7 @@ namespace Supermarket.Client
         private static void ReadWriteExcell(string file)
         {
             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + file +
-                @";Extended Properties=""Excel 12.0 Xml;HDR=Yes;""";
+                                      @";Extended Properties=""Excel 12.0 Xml;HDR=Yes;""";
 
             OleDbConnection dbCon = new OleDbConnection(connectionString);
 
@@ -105,7 +106,6 @@ namespace Supermarket.Client
 
                         reader.Read();
                         string locationName = reader[0].ToString();
-                        
 
                         string dateFormat = "dd-MMM-yyyy";
                         string currDate = file.Substring(file.Length - 15, 11);
@@ -118,9 +118,10 @@ namespace Supermarket.Client
                             if (reader[0].ToString().CompareTo("…") != 0)
                             {
                                 int? locId = db.Locations
-                                    .Where(x => x.LocationName == locationName)
-                                    .Select(x => x.ID).FirstOrDefault();
-                                Location location = new Location();                                
+                                               .Where(x => x.LocationName == locationName)
+                                               .Select(x => x.ID)
+                                               .FirstOrDefault();
+                                Location location = new Location();
 
                                 if (locId == 0)
                                 {
@@ -166,7 +167,5 @@ namespace Supermarket.Client
                 }
             }
         }
-
     }
 }
-
