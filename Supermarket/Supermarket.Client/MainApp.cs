@@ -91,6 +91,8 @@ namespace Supermarket.Client
 
             dbCon.Open();
 
+            
+
             using (dbCon)
             {
                 
@@ -101,12 +103,20 @@ namespace Supermarket.Client
                 {
                     using (reader)
                     {
+                        Sale saleObj = new Sale();
+
                         reader.Read();
                         string location = reader[0].ToString();
+                        
+
+                        reader.Read();
 
                         while (reader.Read())
                         {
-
+                            saleObj.Location.LocationName = location;
+                            saleObj.ProductID = int.Parse(reader[0].ToString());
+                            saleObj.Quanity = int.Parse(reader[1].ToString());
+                            saleObj.UnitPrice = decimal.Parse(reader[2].ToString());
                         }
                     }
                 }
