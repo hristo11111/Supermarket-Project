@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Text;
 using System.IO;
+using Supermarket_EF.Data;
 using Supermarket.Client.Helpers;
-using SupermarketEF.Data;
 using iTextSharp.text;
 
 namespace Supermarket.Client
@@ -64,7 +64,7 @@ namespace Supermarket.Client
             PDFBuilder.HtmlPdfPage page = builder.AddPage();
             page.AppendHtml(sb.ToString());
             byte[] file = builder.RenderPdf();
-            string tempFolder = AppDomain.CurrentDomain.BaseDirectory + "PdfResult\\";
+            string tempFolder = "../../../PdfResult\\";
             string tempFileName = DateTime.Now.ToString("yyyy-MM-dd") + "-" + Guid.NewGuid() + ".pdf";
             if (Helpers.Helper.DirectoryExist(tempFolder))
             {

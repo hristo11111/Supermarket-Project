@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -39,6 +39,9 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>.\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\packages\mongocsharpdriver.1.8.1\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -48,13 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Data.SQLite, Version=1.0.87.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Data.SQLite.1.0.87.0\lib\net45\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.Linq">
-      <HintPath>..\packages\System.Data.SQLite.1.0.87.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.86.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,7 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExportReportInMongoDB.cs" />
+    <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Helpers\PDFBuilder.cs" />
     <Compile Include="MainApp.cs" />
+    <Compile Include="PdfReportCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLiteClient.cs" />
     <Compile Include="TaxesData.cs" />
@@ -94,6 +94,9 @@
     <Content Include="x86\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

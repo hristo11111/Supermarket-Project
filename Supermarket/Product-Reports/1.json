@@ -1,1 +1,5 @@
-{ "productId" : 1, "productName" : "Beer \"Zagorka\"", "vendorName" : "Zagorka Corp.", "totalSoldQuantitySold" : 673, "totalIncomes" : "609.2400" }
+{ "product-id" : 1,
+ "product-name" : "Beer \"Zagorka\"",
+ "vendor-name" : "Zagorka Corp.",
+ "total-quantity-sold" : 673,
+ "total-incomes" : "609.2400" }

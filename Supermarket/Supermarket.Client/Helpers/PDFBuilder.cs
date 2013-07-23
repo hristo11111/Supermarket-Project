@@ -10,7 +10,7 @@ using iTextSharp.text.pdf;
 using System.Windows;
 using System.IO;
 using System.Text.RegularExpressions;
-using iTextSharp.text.html;
+
 
 namespace Supermarket.Client.Helpers
 {

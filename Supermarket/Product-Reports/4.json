@@ -1,1 +1,5 @@
-{ "productId" : 4, "productName" : "Chocolate “Milka”", "vendorName" : "Nestle Sofia Corp.", "totalSoldQuantitySold" : 47, "totalIncomes" : "135.7000" }
+{ "product-id" : 4,
+ "product-name" : "Chocolate “Milka”",
+ "vendor-name" : "Nestle Sofia Corp.",
+ "total-quantity-sold" : 47,
+ "total-incomes" : "135.7000" }

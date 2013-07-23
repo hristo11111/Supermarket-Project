@@ -65,7 +65,7 @@
     </OpenAccessDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.config" />
     <None Include="EntitiesModel.rlinq.diagram">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </None>

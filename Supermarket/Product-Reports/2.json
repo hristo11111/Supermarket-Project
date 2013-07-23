@@ -1,1 +1,5 @@
-{ "productId" : 2, "productName" : "Vodka “Targovishte”", "vendorName" : "Targovishte Bottling Company Ltd.", "totalSoldQuantitySold" : 144, "totalIncomes" : "1155.9000" }
+{ "product-id" : 2,
+ "product-name" : "Vodka “Targovishte”",
+ "vendor-name" : "Targovishte Bottling Company Ltd.",
+ "total-quantity-sold" : 144,
+ "total-incomes" : "1155.9000" }

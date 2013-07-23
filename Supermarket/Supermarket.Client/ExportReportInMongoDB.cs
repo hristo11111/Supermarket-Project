@@ -23,11 +23,11 @@ namespace Supermarket.Client
                                    let totalIncome = g.Sum(y => y.Sum)
                                    select new
                                      {
-                                         productId = g.Key.ProductID,
-                                         productName = g.Key.ProductName,
-                                         vendorName = g.Key.VendorName,
-                                         totalSoldQuantitySold = totalSold,
-                                         totalIncomes = totalIncome
+                                         product_id = g.Key.ProductID,
+                                         product_name = g.Key.ProductName,
+                                         vendor_name = g.Key.VendorName,
+                                         total_quantity_sold = totalSold,
+                                         total_incomes = totalIncome
                                      };
 
                 string pathString = "../../../Product-Reports";
@@ -37,8 +37,10 @@ namespace Supermarket.Client
                 foreach (var report in reports)
                 {
                     string jsonReports = report.ToJson();
+                    jsonReports = jsonReports.Replace('_', '-');
+                    jsonReports = jsonReports.Replace(",", ",\n");
                     AddInMongoDB(jsonReports);
-                    File.WriteAllText(pathString + "/"  + report.productId + ".json",
+                    File.WriteAllText(pathString + "/"  + report.product_id + ".json",
                         jsonReports);
                 }
             }
