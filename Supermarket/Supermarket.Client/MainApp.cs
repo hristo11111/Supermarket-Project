@@ -105,8 +105,7 @@ namespace Supermarket.Client
 
                         reader.Read();
                         string locationName = reader[0].ToString();
-                        Location location = new Location();
-                        location.LocationName = locationName;
+                        
 
                         string dateFormat = "dd-MMM-yyyy";
                         string currDate = file.Substring(file.Length - 15, 11);
@@ -118,7 +117,27 @@ namespace Supermarket.Client
                         {
                             if (reader[0].ToString().CompareTo("…") != 0)
                             {
-                                saleObj.Location = location;
+                                int? locId = -1;
+                                Location location = new Location();
+                                foreach (var item in db.Sales)
+                                {
+                                    if (item.Location.LocationName.CompareTo(locationName) == 0)
+                                    {
+                                        locId = item.LocationID;
+                                        break;
+                                    }
+                                }
+
+                                if (locId == -1)
+                                {
+                                    location.LocationName = locationName;
+                                    saleObj.Location = location;
+                                }
+                                else
+                                {
+                                    saleObj.LocationID = (int)locId;
+                                }
+
                                 saleObj.ProductID = int.Parse(reader[0].ToString());
                                 saleObj.Quanity = int.Parse(reader[1].ToString());
                                 saleObj.UnitPrice = decimal.Parse(reader[2].ToString());
