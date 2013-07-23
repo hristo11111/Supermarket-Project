@@ -1,0 +1,8 @@
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket-EF.Data\bin\Debug\Supermarket-EF.Data.dll.config
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket-EF.Data\bin\Debug\Supermarket-EF.Data.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket-EF.Data\bin\Debug\Supermarket-EF.Data.pdb
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket-EF.Data\bin\Debug\EntityFramework.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket-EF.Data\bin\Debug\EntityFramework.xml
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket-EF.Data\obj\Debug\Supermarket-EF.Data.csprojResolveAssemblyReference.cache
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket-EF.Data\obj\Debug\Supermarket-EF.Data.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket-EF.Data\obj\Debug\Supermarket-EF.Data.pdb

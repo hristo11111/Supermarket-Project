@@ -1,0 +1,16 @@
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\Supermarket.Client.exe.config
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\Supermarket.Client.exe
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\Supermarket.Client.pdb
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\EntityFramework.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\Ionic.Zip.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\Supermarket-EF.Data.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\SupermarketOpenAccess.Models.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\Telerik.OpenAccess.35.Extensions.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\Supermarket-EF.Data.pdb
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\SupermarketOpenAccess.Models.pdb
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\EntityFramework.xml
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\Ionic.Zip.xml
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\bin\Debug\Telerik.OpenAccess.35.Extensions.xml
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\obj\Debug\Supermarket.Client.csprojResolveAssemblyReference.cache
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\obj\Debug\Supermarket.Client.exe
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\Supermarket.Client\obj\Debug\Supermarket.Client.pdb

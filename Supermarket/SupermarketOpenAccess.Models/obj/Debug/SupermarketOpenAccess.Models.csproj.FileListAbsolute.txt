@@ -1,0 +1,8 @@
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\SupermarketOpenAccess.Models\bin\Debug\SupermarketOpenAccess.Models.dll.config
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\SupermarketOpenAccess.Models\bin\Debug\SupermarketOpenAccess.Models.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\SupermarketOpenAccess.Models\bin\Debug\SupermarketOpenAccess.Models.pdb
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\SupermarketOpenAccess.Models\bin\Debug\Telerik.OpenAccess.35.Extensions.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\SupermarketOpenAccess.Models\bin\Debug\Telerik.OpenAccess.35.Extensions.xml
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\SupermarketOpenAccess.Models\obj\Debug\SupermarketOpenAccess.Models.csprojResolveAssemblyReference.cache
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\SupermarketOpenAccess.Models\obj\Debug\SupermarketOpenAccess.Models.dll
+C:\Users\Hristo\Documents\GitHub\Supermarket-Project\Supermarket\SupermarketOpenAccess.Models\obj\Debug\SupermarketOpenAccess.Models.pdb

@@ -10,6 +10,7 @@ using Ionic.Zip;
 using System.IO;
 using System.Data.OleDb;
 using System.Data;
+using System.Globalization;
 
 namespace Supermarket.Client
 {
@@ -91,11 +92,8 @@ namespace Supermarket.Client
 
             dbCon.Open();
 
-            
-
             using (dbCon)
             {
-                
                 OleDbCommand readTable = new OleDbCommand("SELECT * FROM [Sales$]", dbCon);
                 OleDbDataReader reader = readTable.ExecuteReader();
 
@@ -106,25 +104,38 @@ namespace Supermarket.Client
                         Sale saleObj = new Sale();
 
                         reader.Read();
-                        string location = reader[0].ToString();
-                        
+                        string locationName = reader[0].ToString();
+                        Location location = new Location();
+                        location.LocationName = locationName;
+
+                        string dateFormat = "dd-MMM-yyyy";
+                        string currDate = file.Substring(file.Length - 15, 11);
+                        DateTime date = DateTime.ParseExact(currDate, dateFormat, CultureInfo.InvariantCulture);
 
                         reader.Read();
 
                         while (reader.Read())
                         {
-                            saleObj.Location.LocationName = location;
-                            saleObj.ProductID = int.Parse(reader[0].ToString());
-                            saleObj.Quanity = int.Parse(reader[1].ToString());
-                            saleObj.UnitPrice = decimal.Parse(reader[2].ToString());
+                            if (reader[0].ToString().CompareTo("…") != 0)
+                            {
+                                saleObj.Location = location;
+                                saleObj.ProductID = int.Parse(reader[0].ToString());
+                                saleObj.Quanity = int.Parse(reader[1].ToString());
+                                saleObj.UnitPrice = decimal.Parse(reader[2].ToString());
+                                saleObj.Sum = decimal.Parse(reader[3].ToString());
+                                saleObj.Date = date;
+
+                                db.Sales.Add(saleObj);
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                reader.Read();
+                                reader.Read();
+                            }
                         }
                     }
                 }
-
-
-                Console.WriteLine();
-
-                
             }
         }
 
